@@ -1,6 +1,6 @@
 {
   "name": "@stdlib/string-code-point-at",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Return a Unicode code point from a string at a specified position.",
   "license": "Apache-2.0",
   "author": {
@@ -19,7 +19,6 @@
   "main": "./lib",
   "directories": {
     "benchmark": "./benchmark",
-    "bin": "./bin",
     "doc": "./docs",
     "example": "./examples",
     "lib": "./lib",
