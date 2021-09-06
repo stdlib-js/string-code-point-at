@@ -195,6 +195,20 @@ $ echo -n 'अनुच्छेद' | code-point-at --pos=2
 
 <!-- /.references -->
 
+<!-- Section for related `stdlib` packages. Do not manually edit this section, as it is automatically populated. -->
+
+<section class="related">
+
+* * *
+
+## See Also
+
+-   [`@stdlib/string/from-code-point`][@stdlib/string/from-code-point]: create a string from a sequence of Unicode code points.
+
+</section>
+
+<!-- /.related -->
+
 <!-- Section for all links. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
 
 
@@ -259,6 +273,12 @@ Copyright &copy; 2016-2021. The Stdlib [Authors][stdlib-authors].
 [mdn-string-codepointat]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/codePointAt
 
 [utf-16]: https://en.wikipedia.org/wiki/UTF-16
+
+<!-- <related-links> -->
+
+[@stdlib/string/from-code-point]: https://github.com/stdlib-js/string-from-code-point
+
+<!-- </related-links> -->
 
 </section>
 
