@@ -20,7 +20,7 @@ limitations under the License.
 
 # codePointAt
 
-[![NPM version][npm-image]][npm-url] [![Build Status][test-image]][test-url] [![Coverage Status][coverage-image]][coverage-url] [![dependencies][dependencies-image]][dependencies-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][test-image]][test-url] [![Coverage Status][coverage-image]][coverage-url] <!-- [![dependencies][dependencies-image]][dependencies-url] -->
 
 > Return a Unicode [code point][code-point] from a string at a specified position.
 
@@ -203,7 +203,7 @@ $ echo -n 'अनुच्छेद' | code-point-at --pos=2
 
 ## See Also
 
--   [`@stdlib/string/from-code-point`][@stdlib/string/from-code-point]: create a string from a sequence of Unicode code points.
+-   <span class="package-name">[`@stdlib/string/from-code-point`][@stdlib/string/from-code-point]</span><span class="delimiter">: </span><span class="description">create a string from a sequence of Unicode code points.</span>
 
 </section>
 
@@ -254,8 +254,12 @@ Copyright &copy; 2016-2021. The Stdlib [Authors][stdlib-authors].
 [coverage-image]: https://img.shields.io/codecov/c/github/stdlib-js/string-code-point-at/main.svg
 [coverage-url]: https://codecov.io/github/stdlib-js/string-code-point-at?branch=main
 
+<!--
+
 [dependencies-image]: https://img.shields.io/david/stdlib-js/string-code-point-at.svg
 [dependencies-url]: https://david-dm.org/stdlib-js/string-code-point-at/main
+
+-->
 
 [chat-image]: https://img.shields.io/gitter/room/stdlib-js/stdlib.svg
 [chat-url]: https://gitter.im/stdlib-js/stdlib/
