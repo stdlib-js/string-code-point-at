@@ -34,38 +34,30 @@ limitations under the License.
 
 <!-- Package usage documentation. -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/string-code-point-at
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm` branch][esm-url].
+-   If you are using Deno, visit the [`deno` branch][deno-url].
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd` branch][umd-url].
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
-To use in Observable,
-
 ```javascript
-codePointAt = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/string-code-point-at@umd/browser.js' )
-```
-
-To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
-
-```javascript
-var codePointAt = require( 'path/to/vendor/umd/string-code-point-at/index.js' )
-```
-
-To include the bundle in a webpage,
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/string-code-point-at@umd/browser.js"></script>
-```
-
-If no recognized module system is present, access bundle contents via the global scope:
-
-```html
-<script type="text/javascript">
-(function () {
-    window.codePointAt;
-})();
-</script>
+var codePointAt = require( '@stdlib/string-code-point-at' );
 ```
 
 #### codePointAt( string, position\[, backward] )
@@ -77,11 +69,18 @@ var out = codePointAt( 'last man standing', 4 );
 // returns 32
 ```
 
-The function supports providing a `boolean` argument for performing backward iteration for low surrogates.
+The function supports providing a `backward` argument for performing backward iteration for low surrogates.
 
 ```javascript
 var out = codePointAt( '🌷', 1, true );
 // returns 127799
+```
+
+The function supports providing a negative `position`.
+
+```javascript
+var out = codePointAt( 'last man standing', -13 );
+// returns 32
 ```
 
 </section>
@@ -96,7 +95,9 @@ var out = codePointAt( '🌷', 1, true );
 
 This function differs from [`String.prototype.codePointAt`][mdn-string-codepointat] in the following ways:
 
--   The function supports providing a `boolean` argument for performing backward iteration for low surrogates. [`String.prototype.codePointAt`][mdn-string-codepointat] simply returns the low surrogate value if no [UTF-16][utf-16] surrogate pair begins at the specified position. If invoked with `backward` set to `true`, this function will return the code point after aggregating with the preceding high surrogate, if the specified position does not mark the start of a surrogate pair.
+-   The function supports providing a negative `position`. If provided a negative `position`, the function determines the string position relative to the end of the string.
+-   The function supports providing a `backward` argument for performing backward iteration for low surrogates. [`String.prototype.codePointAt`][mdn-string-codepointat] simply returns the low surrogate value if no [UTF-16][utf-16] surrogate pair begins at the specified position. If invoked with `backward` set to `true`, this function will return the code point after aggregating with the preceding high surrogate, if the specified position does not mark the start of a surrogate pair.
+-   The function raises an exception if provided a `position` which exceeds the bounds of the input string.
 
 </section>
 
@@ -110,30 +111,20 @@ This function differs from [`String.prototype.codePointAt`][mdn-string-codepoint
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/string-code-point-at@umd/browser.js"></script>
-<script type="text/javascript">
-(function () {
+```javascript
+var codePointAt = require( '@stdlib/string-code-point-at' );
 
-console.log( codePointAt( 'last man standing', 4 ) );
-// => 32
+var v = codePointAt( 'last man standing', 4 );
+// returns 32
 
-console.log( codePointAt( 'presidential election', 8, true ) );
-// => 116
+v = codePointAt( 'presidential election', 8, true );
+// returns 116
 
-console.log( codePointAt( 'अनुच्छेद', 2 ) );
-// => 2369
+v = codePointAt( 'अनुच्छेद', 2 );
+// returns 2369
 
-console.log( codePointAt( '🌷', 1, true ) );
-// => 127799
-
-})();
-</script>
-</body>
-</html>
+v = codePointAt( '🌷', 1, true );
+// returns 127799
 ```
 
 </section>
@@ -142,7 +133,78 @@ console.log( codePointAt( '🌷', 1, true ) );
 
 <!-- Section for describing a command-line interface. -->
 
+* * *
 
+<section class="cli">
+
+## CLI
+
+<section class="installation">
+
+## Installation
+
+To use the module as a general utility, install the module globally
+
+```bash
+npm install -g @stdlib/string-code-point-at
+```
+
+</section>
+<!-- CLI usage documentation. -->
+
+
+<section class="usage">
+
+### Usage
+
+```text
+Usage: code-point-at [options] --pos=<index> [<string>]
+
+Options:
+
+  -h,    --help                Print this message.
+  -V,    --version             Print the package version.
+  -b,    --backward            Backward iteration for low surrogates.
+         --pos index           Position in string.
+```
+
+</section>
+
+<!-- /.usage -->
+
+<!-- CLI usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+
+<section class="notes">
+
+</section>
+
+<!-- /.notes -->
+
+<!-- CLI usage examples. -->
+
+<section class="examples">
+
+### Examples
+
+```bash
+$ code-point-at --pos=2 अनुच्छेद
+2369
+```
+
+To use as a [standard stream][standard-streams],
+
+```bash
+$ echo -n 'अनुच्छेद' | code-point-at --pos=2
+2369
+```
+
+</section>
+
+<!-- /.examples -->
+
+</section>
+
+<!-- /.cli -->
 
 <!-- Section to include cited references. If references are included, add a horizontal rule *before* the section. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
 
@@ -245,7 +307,7 @@ Copyright &copy; 2016-2022. The Stdlib [Authors][stdlib-authors].
 
 <!-- <related-links> -->
 
-[@stdlib/string/from-code-point]: https://github.com/stdlib-js/string-from-code-point/tree/umd
+[@stdlib/string/from-code-point]: https://github.com/stdlib-js/string-from-code-point
 
 <!-- </related-links> -->
 
