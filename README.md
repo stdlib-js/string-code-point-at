@@ -45,25 +45,111 @@ limitations under the License.
 
 <!-- Package usage documentation. -->
 
+<section class="installation">
 
+## Installation
 
+```bash
+npm install @stdlib/string-code-point-at
+```
 
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm` branch][esm-url].
+-   If you are using Deno, visit the [`deno` branch][deno-url].
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd` branch][umd-url].
+-   To use as a general utility for the command line, install the corresponding [CLI package][cli-section] globally.
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+</section>
+
+<section class="usage">
+
+## Usage
+
+```javascript
+var codePointAt = require( '@stdlib/string-code-point-at' );
+```
+
+#### codePointAt( string, position\[, backward] )
+
+Returns a Unicode [code point][code-point] from a string at a specified position.
+
+```javascript
+var out = codePointAt( 'last man standing', 4 );
+// returns 32
+```
+
+The function supports providing a `backward` argument for performing backward iteration for low surrogates.
+
+```javascript
+var out = codePointAt( '🌷', 1, true );
+// returns 127799
+```
+
+The function supports providing a negative `position`.
+
+```javascript
+var out = codePointAt( 'last man standing', -13 );
+// returns 32
+```
+
+</section>
+
+<!-- /.usage -->
 
 <!-- Package usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
 
+<section class="notes">
 
+## Notes
+
+This function differs from [`String.prototype.codePointAt`][mdn-string-codepointat] in the following ways:
+
+-   The function supports providing a negative `position`. If provided a negative `position`, the function determines the string position relative to the end of the string.
+-   The function supports providing a `backward` argument for performing backward iteration for low surrogates. [`String.prototype.codePointAt`][mdn-string-codepointat] simply returns the low surrogate value if no [UTF-16][utf-16] surrogate pair begins at the specified position. If invoked with `backward` set to `true`, this function will return the code point after aggregating with the preceding high surrogate, if the specified position does not mark the start of a surrogate pair.
+-   The function raises an exception if provided a `position` which exceeds the bounds of the input string.
+
+</section>
+
+<!-- /.notes -->
 
 <!-- Package usage examples. -->
 
+<section class="examples">
 
+## Examples
+
+<!-- eslint no-undef: "error" -->
+
+```javascript
+var codePointAt = require( '@stdlib/string-code-point-at' );
+
+var v = codePointAt( 'last man standing', 4 );
+// returns 32
+
+v = codePointAt( 'presidential election', 8, true );
+// returns 116
+
+v = codePointAt( 'अनुच्छेद', 2 );
+// returns 2369
+
+v = codePointAt( '🌷', 1, true );
+// returns 127799
+```
+
+</section>
+
+<!-- /.examples -->
 
 <!-- Section for describing a command-line interface. -->
 
-
+* * *
 
 <section class="cli">
 
-
+## CLI
 
 <section class="installation">
 
@@ -81,7 +167,7 @@ npm install -g @stdlib/string-code-point-at-cli
 
 <section class="usage">
 
-## Usage
+### Usage
 
 ```text
 Usage: code-point-at [options] --pos=<index> [<string>]
@@ -110,7 +196,7 @@ Options:
 
 <section class="examples">
 
-## Examples
+### Examples
 
 ```bash
 $ code-point-at --pos=2 अनुच्छेद
@@ -144,9 +230,10 @@ $ echo -n 'अनुच्छेद' | code-point-at --pos=2
 
 <section class="related">
 
+* * *
+
 ## See Also
 
--   <span class="package-name">[`@stdlib/string-code-point-at`][@stdlib/string-code-point-at]</span><span class="delimiter">: </span><span class="description">return a Unicode code point from a string at a specified position.</span>
 -   <span class="package-name">[`@stdlib/string-from-code-point`][@stdlib/string/from-code-point]</span><span class="delimiter">: </span><span class="description">create a string from a sequence of Unicode code points.</span>
 
 </section>
@@ -166,7 +253,7 @@ This package is part of [stdlib][stdlib], a standard library for JavaScript and 
 
 For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
 
-### Community
+#### Community
 
 [![Chat][chat-image]][chat-url]
 
@@ -179,7 +266,7 @@ See [LICENSE][stdlib-license].
 
 ## Copyright
 
-Copyright &copy; 2016-2023. The Stdlib [Authors][stdlib-authors].
+Copyright &copy; 2016-2024. The Stdlib [Authors][stdlib-authors].
 
 </section>
 
@@ -189,8 +276,8 @@ Copyright &copy; 2016-2023. The Stdlib [Authors][stdlib-authors].
 
 <section class="links">
 
-[npm-image]: http://img.shields.io/npm/v/@stdlib/string-code-point-at-cli.svg
-[npm-url]: https://npmjs.org/package/@stdlib/string-code-point-at-cli
+[npm-image]: http://img.shields.io/npm/v/@stdlib/string-code-point-at.svg
+[npm-url]: https://npmjs.org/package/@stdlib/string-code-point-at
 
 [test-image]: https://github.com/stdlib-js/string-code-point-at/actions/workflows/test.yml/badge.svg?branch=main
 [test-url]: https://github.com/stdlib-js/string-code-point-at/actions/workflows/test.yml?query=branch:main
