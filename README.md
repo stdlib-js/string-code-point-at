@@ -52,6 +52,11 @@ limitations under the License.
 ## Usage
 
 ```javascript
+import codePointAt from 'https://cdn.jsdelivr.net/gh/stdlib-js/string-code-point-at@deno/mod.js';
+```
+The previous example will load the latest bundled code from the deno branch. Alternatively, you may load a specific version by loading the file from one of the [tagged bundles](https://github.com/stdlib-js/string-code-point-at/tags). For example,
+
+```javascript
 import codePointAt from 'https://cdn.jsdelivr.net/gh/stdlib-js/string-code-point-at@v0.2.0-deno/mod.js';
 ```
 
@@ -107,7 +112,7 @@ This function differs from [`String.prototype.codePointAt`][mdn-string-codepoint
 <!-- eslint no-undef: "error" -->
 
 ```javascript
-import codePointAt from 'https://cdn.jsdelivr.net/gh/stdlib-js/string-code-point-at@v0.2.0-deno/mod.js';
+import codePointAt from 'https://cdn.jsdelivr.net/gh/stdlib-js/string-code-point-at@deno/mod.js';
 
 var v = codePointAt( 'last man standing', 4 );
 // returns 32
